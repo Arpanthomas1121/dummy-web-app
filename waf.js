@@ -213,6 +213,4 @@ app.use((req,res)=>{
 });
 
 // Start the server and log a message to indicate that it's listening on port 3001
-const server = app.listen(3001, 'localhost', () => {
-  console.log("WAF listening on port 3001");
-});
+const server = app.listen(3001, () => console.log(`Example app listening on 3001!`));
