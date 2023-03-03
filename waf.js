@@ -123,7 +123,9 @@ console.log('path: ',path);
 // Check if the requested path is in the list of sensitive directories
 if (sensitiveDirectories.some(sensitiveDirectories => path.startsWith(sensitiveDirectories))) {
 // If it is, return a 401 Unauthorized status
+console.log('\x1b[36m'); 
 console.log('Unauthorized access attempt: ', req.method, req.originalUrl);
+console.log('\x1b[0m'); 
 res.status(401).send("401 Unauthorized");
 } else {
 // If not, continue to the next middleware
@@ -134,7 +136,9 @@ next();
 // Apply the helmet middleware to add various security-related HTTP headers
 app.use((req, res, next) => {
   helmet()(req, res, () => {
+    console.log('\x1b[33m'); 
     console.log(`Helmet middleware ran for request with URL: ${req.url}`);
+    console.log('\x1b[0m'); 
     next();
   });
 });
